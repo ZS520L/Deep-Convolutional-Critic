@@ -106,5 +106,8 @@ DCC学习到了一个高度可分的特征空间，正常与异常样本被完�
 ![Figure 6. Visualization of the DCC's Discriminative Power and Resulting Performance.](https://tc.z.wiki/autoupload/f/3tdjW0cTpp7UnyEeZ7pj89DBO7i3hlAO9Eehlq6b2wuyl5f0KlZfm6UsKj-HyTuv/20250707/cA0w/924X745/wechat_2025-07-07_194822_083.png)
 > **图**: DCC模型输出的正常/异常分数分布直方图与ROC曲线。
 
+![Figure 7: Activation Pattern Comparison](https://tc.z.wiki/autoupload/f/3tdjW0cTpp7UnyEeZ7pj89DBO7i3hlAO9Eehlq6b2wuyl5f0KlZfm6UsKj-HyTuv/20250708/njvi/1386X835/wechat_2025-07-08_141145_245.png)
+> **图**: 正常样本与异常样本的激活模式对比（MFPT 数据集）。
+
 ## 许可证 (License)
 本仓库遵循 [MIT License](LICENSE)。
