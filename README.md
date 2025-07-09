@@ -46,7 +46,7 @@ Unsupervised anomaly detection is paramount for predictive maintenance. While re
 
 ### 1. 克隆仓库
 ```bash
-git clone https://github.com/your-username/Deep-Convolutional-Critic.git
+git clone https://github.com/ZS520L/Deep-Convolutional-Critic.git
 cd Deep-Convolutional-Critic
 ```
 
@@ -56,7 +56,6 @@ cd Deep-Convolutional-Critic
 # 使用 conda (推荐)
 conda create -n dcc python=3.9
 conda activate dcc
-pip install -r requirements.txt
 
 # 主要依赖包括: pytorch, numpy, scikit-learn, matplotlib, tqdm
 ```
@@ -67,49 +66,25 @@ pip install -r requirements.txt
 - **SEU Dataset:** [Southeast University Gearbox Data](https://github.com/cathysiyu/Mechanical-datasets) (该链接包含多个数据集，请找到SEU轴承部分)
 - **MFPT Dataset:** [Machinery Failure Prevention Technology Society](https://mfpt.org/fault-data-sets/)
 
-`src/dataset.py` 文件会自动处理数据的加载、分段和归一化。
 
 ## 运行实验 (Running the Experiments)
 
-我们通过 `src/main.py` 脚本来执行所有实验。
+我们通过 `main.py` 脚本来执行所有实验。
 
-### 训练DCC模型
-使用以下命令在指定数据集上训练DCC模型。模型权重将保存在 `results/` 目录下。
-
-```bash
-# 在 CWRU 数据集上训练
-python src/main.py --model DCC --dataset CWRU --mode train
-
-# 在 SEU 数据集上训练
-python src/main.py --model DCC --dataset SEU --mode train
-
-# 在 MFPT 数据集上训练
-python src/main.py --model DCC --dataset MFPT --mode train
-```
-
-### 评估与复现结果
+### 训练DCC模型、评估与复现结果
 使用以下命令加载已训练好的模型进行评估，并复现论文中的AUC、t-SNE图和分数分布图。
 
 ```bash
-# 评估在 CWRU 上的模型
-python src/main.py --model DCC --dataset CWRU --mode eval --load_path ./results/DCC_CWRU_model.pth
-
-# 评估在 SEU 上的模型
-python src/main.py --model DCC --dataset SEU --mode eval --load_path ./results/DCC_SEU_model.pth
-
-# 评估在 MFPT 上的模型
-python src/main.py --model DCC --dataset MFPT --mode eval --load_path ./results/DCC_MFPT_model.pth
+# 评估在 三个数据集 上的所有模型效果
+python main.py
 ```
-> 评估脚本将会在控制台打印AUC分数，并将可视化结果保存在 `results/` 文件夹。
+> 评估脚本将会在控制台打印AUC分数。
 
 ## 主要结果 (Main Results)
 
 ### 定量性能对比 (AUC)
 我们的DCC模型在所有数据集上均优于所有基准模型。
 
-================================================================================
-                                  结果汇总: AUC
-================================================================================
 | Method             | CWRU       | SEU        | MFPT       |
 | :-----------------: | :---------: | :---------: | :---------: |
 | DCC                |   1.0000   |   1.0000   |   1.0000   |
@@ -120,7 +95,6 @@ python src/main.py --model DCC --dataset MFPT --mode eval --load_path ./results/
 | LSTMPredictor      |   0.7915   |   0.9740   |   0.5090   |
 | DCGAN              |   0.5809   |   0.5690   |   0.5013   |
 | WGAN-GP            |   0.6102   |   0.8555   |   0.5303   |
-================================================================================
 
 
 ### 可视化分析
